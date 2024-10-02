@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "567564540698",
+    "project_id": "lazo-80cea",
+    "storage_bucket": "lazo-80cea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567564540698:android:a69b988bf97d1f2732aaa3",
+        "android_client_info": {
+          "package_name": "com.example.lazo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPJgL6OuHkTF_mnW4v2VrFnXIjSODjoCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

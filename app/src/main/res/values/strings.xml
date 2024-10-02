@@ -1,0 +1,24 @@
+<resources>
+    //inicio de sesión
+    <string name="app_name">Lazo</string>
+    <string name="correo">Correo</string>
+    <string name="contrasenha">Contraseña</string>
+    <string name="btnIngresar">Ingresar</string>
+    <string name="registrate">Crear cuenta</string>
+
+
+    //registrar cuenta
+    <string name="regNombre">Nombre</string>
+    <string name="regApellido">Apellido</string>
+    <string name="repContrasenha"> Reingrese contraseña</string>
+    <string name="Direccion">Dirección</string>
+    <string name="btnRegistrar">Registrar</string>
+
+    //menu
+    <string name="btnHome">Home</string>
+    <string name="btnBuscar">Buscar</string>
+    <string name="btnDonar">Donar</string>
+    <string name="btnHistorial">Historial</string>
+    <string name="btnPerfil">Perfil</string>
+
+</resources>
