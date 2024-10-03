@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/navbar_scene">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/nueva"
+        android:layout_width="412dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.998">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/home"
+            android:text="@string/btnHome" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/search"
+            android:text="@string/btnBuscar" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/donacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/add"
+            android:text="@string/btnDonar" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/historial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/history"
+            android:text="@string/btnHistorial" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/perfil"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/person"
+            android:text="@string/btnPerfil" />
+    </com.google.android.material.tabs.TabLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.lazo"
-    compileSdk = 34
+    compileSdk = 24
 
     defaultConfig {
         applicationId = "com.example.lazo"
