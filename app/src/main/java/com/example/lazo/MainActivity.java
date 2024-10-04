@@ -1,6 +1,10 @@
 package com.example.lazo;
 
+import static com.example.lazo.R.id.main;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
-
+    public void crearCuenta(View v){
+        Intent i = new Intent(this,RegistroCuenta.class);
+        startActivity(i);
+    }
 
 }

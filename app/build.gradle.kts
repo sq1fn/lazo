@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.lazo"
-    compileSdk = 24
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.lazo"
         minSdk = 24
+        //noinspection ExpiredTargetSdkVersion
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

@@ -66,15 +66,17 @@
                  android:hint="@string/btnIngresar"/>
 
              <TextView
+                 android:id="@+id/registro"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:id="@+id/registro"
-                 android:text="Si no tienes una cuenta registrate"
                  android:layout_gravity="center"
-                 android:padding="8dp"
                  android:layout_marginTop="10dp"
+                 android:clickable="true"
+                 android:onClick="crearCuenta"
+                 android:padding="8dp"
+                 android:text="@string/registrate"
                  android:textColor="@color/lavender"
-                 android:textSize="15dp"/>
+                 android:textSize="15dp" />
 
          </LinearLayout>
 
