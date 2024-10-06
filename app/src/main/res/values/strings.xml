@@ -12,6 +12,7 @@
     <string name="regApellido">Apellido</string>
     <string name="repContrasenha"> Reingrese contraseña</string>
     <string name="Direccion">Dirección</string>
+    <string name="direccionAcopio">Dirección del centro de acopio</string>
     <string name="btnRegistrar">Registrar</string>
 
     //menu
@@ -20,6 +21,17 @@
     <string name="btnDonar">Donar</string>
     <string name="btnHistorial">Historial</string>
     <string name="btnPerfil">Perfil</string>
+
+    //barra lateral
+    <string name="nosotros">Sobre nosotros</string>
+    <string name="contacto">Contacta con el equipo</string>
+    <string name="terminos">Términos y condiciones</string>
+    <string name="logout">Cerrar sesión</string>
+
+    <string name="drawer_open">Drawerabierto</string>
+    <string name="drawer_close">Drawercerrado</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

@@ -1,7 +1,5 @@
 package com.example.lazo;
 
-import static com.example.lazo.R.id.main;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void crearCuenta(View v){
         Intent i = new Intent(this,RegistroCuenta.class);
+        startActivity(i);
+    }
+
+    public void pantallaPrincipal(View v){
+        Intent i = new Intent(this, PantallaPrincipal.class);
         startActivity(i);
     }
 

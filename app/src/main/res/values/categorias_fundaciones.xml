@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categorias">
+        <item>Infancia</item>
+        <item>Adulto mayor</item>
+        <item>Disidencia</item>
+        <item>Discapacidad</item>
+        <item>Situacion de calle</item>
+        <item>Escasos recursos</item>
+        <item>Animales</item>
+    </string-array>
+</resources>

@@ -1,12 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/lazo_fondo"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/lazo_fondo"
     android:gravity="center"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -28,18 +28,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Crea tu cuenta"
-                android:textSize="30sp"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/lavender" />
+                android:textColor="@color/lavender"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="¿Eres una fundación?"
-                android:textSize="18sp"
                 android:textColor="@color/lavender"
-                android:layout_marginTop="20dp"/>
+                android:textSize="18sp" />
 
             <!-- Campos comunes para ambos usuarios -->
 
@@ -54,33 +54,33 @@
                 android:textOn="Fundación" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
                 android:id="@+id/registro_nombre"
-                android:background="@drawable/cuadro_de_texto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
+                android:background="@drawable/cuadro_de_texto"
                 android:hint="Nombre"
+                android:padding="8dp"
                 android:textColor="@color/black" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
                 android:id="@+id/registro_correo"
-                android:background="@drawable/cuadro_de_texto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
+                android:background="@drawable/cuadro_de_texto"
                 android:hint="Correo"
+                android:padding="8dp"
                 android:textColor="@color/black" />
 
             <EditText
+                android:id="@+id/registro_contrasenha"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/registro_contrasenha"
-                android:background="@drawable/cuadro_de_texto"
                 android:layout_marginTop="20dp"
-                android:padding="8dp"
+                android:background="@drawable/cuadro_de_texto"
                 android:hint="Contraseña"
+                android:padding="8dp"
                 android:textColor="@color/black" />
 
             <!-- Campos adicionales para fundaciones -->
@@ -88,17 +88,17 @@
                 android:id="@+id/fundacion_extra_fields"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
-                android:visibility="gone"
-                android:layout_marginTop="20dp">
+                android:visibility="gone">
 
                 <EditText
+                    android:id="@+id/registro_direccion"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/registro_direccion"
                     android:background="@drawable/cuadro_de_texto"
+                    android:hint="@string/direccionAcopio"
                     android:padding="8dp"
-                    android:hint="Dirección del centro de acopio"
                     android:textColor="@color/black" />
 
                 <Spinner
@@ -106,20 +106,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:entries="@array/categorias_fundacion"
-                    android:background="@drawable/cuadro_de_texto" />
+                    android:background="@drawable/cuadro_de_texto"
+                    android:entries="@array/categorias"
+                    android:spinnerMode="dropdown" />
 
             </LinearLayout>
 
 
             <Button
+                android:id="@+id/boton_registro"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="REGISTRARSE"
-                android:id="@+id/boton_registro"
-                android:textSize="18dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/lavender"
+                android:text="REGISTRARSE"
+                android:textSize="18dp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>

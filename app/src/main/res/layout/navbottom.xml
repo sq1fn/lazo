@@ -7,7 +7,7 @@
     app:layoutDescription="@xml/navbar_scene">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/nueva"
+        android:id="@+id/navbottom"
         android:layout_width="412dp"
         android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
