@@ -79,7 +79,17 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/cuadro_de_texto"
-                android:hint="Contraseña"
+                android:hint="@string/contrasenha"
+                android:padding="8dp"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/registro_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/cuadro_de_texto"
+                android:hint="@string/telefono"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
