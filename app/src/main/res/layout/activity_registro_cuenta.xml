@@ -51,7 +51,7 @@
                 android:padding="10dp"
                 android:textAllCaps="true"
                 android:textOff="Donador"
-                android:textOn="Fundación" />
+                android:textOn="Fundación"/>
 
             <EditText
                 android:id="@+id/registro_nombre"
