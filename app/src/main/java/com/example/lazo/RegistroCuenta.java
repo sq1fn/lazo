@@ -18,6 +18,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.lazo.modelo.Fundacion;
+import com.example.lazo.modelo.Usuario;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class RegistroCuenta extends AppCompatActivity {
 
     private LinearLayout fundacionExtraFields;
@@ -69,72 +74,35 @@ public class RegistroCuenta extends AppCompatActivity {
             String telefonoUsuario = telefono.getText().toString();
             boolean esFundacion = switchTipoUsuario.isChecked();
 
-            // Validación de nombre
-            if (nombreUsuario.isEmpty()) {
-                nombre.setError("El nombre es obligatorio");
-                return;
-            }
-
-            // Validación de correo
-            //el matcher sirve para validar el formato del correo
-            if (correoUsuario.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(correoUsuario).matches()) {
-                correo.setError("Ingresa un correo válido");
-                return;
-            }
-
-            // Validación de contraseña
-            if (contrasenaUsuario.isEmpty() || contrasenaUsuario.length() < 4) {
-                contrasena.setError("La contraseña debe tener al menos 4 caracteres");
-                return;
-            }
-
-            // Validación de teléfono
-            if (telefonoUsuario.isEmpty() || !telefonoUsuario.matches("\\d{9,}")) {
-                telefono.setError("El número de teléfono debe tener al menos 9 dígitos y solo contener números");
-                return;
-            }
+            // Referencia a Firebase
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference reference;
 
             if (esFundacion) {
                 String direccionF = direccion.getText().toString();
                 String categoriaSeleccionada = categoria.getSelectedItem().toString();
 
-                // Validación de dirección
+                // Validaciones adicionales para la fundación
                 if (direccionF.isEmpty()) {
-                    direccion.setError("La dirección es obligatoria para fundaciones");
+                    direccion.setError("La dirección es obligatoria");
                     return;
                 }
 
-                // Validación de categoría
-                if (categoriaSeleccionada.isEmpty()) {
-                    Toast.makeText(RegistroCuenta.this, "Por favor, selecciona una categoría", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                Fundacion fundacion = new Fundacion(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario, direccionF, categoriaSeleccionada);
+                reference = database.getReference("users/fundaciones");
+                reference.child(nombreUsuario).setValue(fundacion);
+
+            } else {
+                Usuario usuario = new Usuario(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario);
+                reference = database.getReference("users/usuarioStandar");
+                reference.child(nombreUsuario).setValue(usuario);
             }
-
-            // Guardar en SharedPreferences (si todas las validaciones son correctas)
-            SharedPreferences preferences = getSharedPreferences("userPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("nombre", nombreUsuario);
-            editor.putString("correo", correoUsuario);
-            editor.putString("contrasena", contrasenaUsuario);
-            editor.putString("telefono", telefonoUsuario);
-            editor.putBoolean("esFundacion", esFundacion);
-
-            if (esFundacion) {
-                String direccionUsuario = direccion.getText().toString();
-                String categoriaSeleccionada = categoria.getSelectedItem().toString();
-                editor.putString("direccion", direccionUsuario);
-                editor.putString("categoria", categoriaSeleccionada);
-            }
-
-            editor.apply();
 
             Toast.makeText(RegistroCuenta.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-
-            // Redirigir al inicio de sesión o a otra actividad
             Intent intent = new Intent(RegistroCuenta.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
+
 
     }};
