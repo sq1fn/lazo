@@ -2,7 +2,6 @@ package com.example.lazo;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,6 +72,23 @@ public class RegistroCuenta extends AppCompatActivity {
             String contrasenaUsuario = contrasena.getText().toString();
             String telefonoUsuario = telefono.getText().toString();
             boolean esFundacion = switchTipoUsuario.isChecked();
+
+            if (nombreUsuario.isEmpty()) {
+                nombre.setError("El nombre es obligatorio");
+                return;
+            }
+            if (correoUsuario.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(correoUsuario).matches()) {
+                correo.setError("Ingresa un correo válido");
+                return;
+            }
+            if (contrasenaUsuario.isEmpty() || contrasenaUsuario.length() < 4) {
+                contrasena.setError("La contraseña debe tener al menos 4 caracteres");
+                return;
+            }
+            if (telefonoUsuario.isEmpty() || !telefonoUsuario.matches("\\d{9,}")) {
+                telefono.setError("El número de teléfono debe tener al menos 9 dígitos y solo contener números");
+                return;
+            }
 
             // Referencia a Firebase
             FirebaseDatabase database = FirebaseDatabase.getInstance();
