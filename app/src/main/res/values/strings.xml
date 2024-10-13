@@ -35,6 +35,10 @@
     //item recycler
     <string name="categoria_fundacion">Categoría</string>
     <string name="nombre_fundacion">Nombre</string>
+
+    //menu de cuentas consultadas
+    <string name="reportar">Reportar</string>
+    <string name="seguir">Seguir</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

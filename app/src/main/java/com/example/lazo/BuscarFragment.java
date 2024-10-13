@@ -23,14 +23,10 @@ import java.util.List;
 
 public class BuscarFragment extends Fragment {
 
-    private RecyclerView recyclerView;
     private FundacionAdapter adapter;
     private List<Fundacion> fundacionList;
-    private DatabaseReference reference;
 
-    public BuscarFragment() {
-        // Required empty public constructor
-    }
+    public BuscarFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +36,7 @@ public class BuscarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflar el layout para el fragmento
         return inflater.inflate(R.layout.fragment_buscar, container, false);
     }
 
@@ -49,7 +45,7 @@ public class BuscarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Inicializar RecyclerView
-        recyclerView = view.findViewById(R.id.recyclerview); // Asegúrate de que el ID sea correcto
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview); // Asegúrate de que el ID sea correcto
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Inicializar lista de fundaciones y el adapter
@@ -58,7 +54,7 @@ public class BuscarFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Conectar con Firebase para obtener las fundaciones
-        reference = FirebaseDatabase.getInstance().getReference("users/fundaciones");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users/fundaciones");
 
         // Obtener los datos de Firebase
         reference.addValueEventListener(new ValueEventListener() {
@@ -69,13 +65,11 @@ public class BuscarFragment extends Fragment {
                     Fundacion fundacion = dataSnapshot.getValue(Fundacion.class);
                     fundacionList.add(fundacion);
                 }
-                adapter.notifyDataSetChanged(); // Actualizar el adapter cuando se obtienen los datos
+                adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Manejar el error si ocurre
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
     }
 }
