@@ -32,7 +32,9 @@
     <string name="drawer_open">Drawerabierto</string>
     <string name="drawer_close">Drawercerrado</string>
 
-
+    //item recycler
+    <string name="categoria_fundacion">Categoría</string>
+    <string name="nombre_fundacion">Nombre</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

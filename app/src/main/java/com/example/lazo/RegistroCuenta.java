@@ -119,6 +119,4 @@ public class RegistroCuenta extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-
-
     }};
