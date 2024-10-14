@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/cuadro_de_texto"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -50,8 +49,9 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="10dp"
                 android:textAllCaps="true"
-                android:textOff="Donador"
-                android:textOn="Fundación"/>
+                android:textOff="@string/donadorSwitch"
+                android:textOn="@string/fundacionSwitch"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
 
             <EditText
                 android:id="@+id/registro_nombre"
@@ -59,7 +59,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/cuadro_de_texto"
-                android:hint="Nombre"
+                android:hint="@string/regNombre"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
@@ -69,7 +69,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/cuadro_de_texto"
-                android:hint="Correo"
+                android:hint="@string/correo"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
@@ -129,8 +129,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/lavender"
-                android:text="REGISTRARSE"
-                android:textSize="18dp"
+                android:text="@string/btnRegistrar"
+                android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>

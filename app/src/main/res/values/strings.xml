@@ -14,7 +14,10 @@
     <string name="telefono">Teléfono</string>
     <string name="direccion">Dirección</string>
     <string name="direccionAcopio">Dirección del centro de acopio</string>
-    <string name="btnRegistrar">Registrar</string>
+    <string name="btnRegistrar">REGISTRARSE</string>
+
+    <string name="fundacionSwitch">Fundación</string>
+    <string name="donadorSwitch">Donador</string>
 
     //menu
     <string name="btnHome">Home</string>

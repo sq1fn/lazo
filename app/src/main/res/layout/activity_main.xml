@@ -21,7 +21,6 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_gravity="center_horizontal"
-             android:background="@drawable/cuadro_de_texto"
              android:orientation="vertical"
              android:padding="24dp">
 
@@ -63,7 +62,7 @@
                  android:hint="@string/btnIngresar"
                  android:onClick="pantallaPrincipal"
                  android:text="INGRESA"
-                 android:textSize="18dp"
+                 android:textSize="18sp"
                  app:cornerRadius="20dp" />
 
              <TextView
