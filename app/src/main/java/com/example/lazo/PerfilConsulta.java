@@ -17,7 +17,6 @@ public class PerfilConsulta extends AppCompatActivity {
         direccionPerfil = findViewById(R.id.direccionPerfil);
         telefonoPerfil = findViewById(R.id.telefonoPerfil);
 
-        // Obtener datos de la intención
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             nombrePerfil.setText(bundle.getString("Nombre"));

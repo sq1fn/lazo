@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import androidx.appcompat.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.lazo.modelo.Fundacion;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +35,6 @@ public class BuscarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflar el layout para el fragmento
         return inflater.inflate(R.layout.fragment_buscar, container, false);
     }
 
@@ -44,11 +42,9 @@ public class BuscarFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Inicializar RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerview); // Asegúrate de que el ID sea correcto
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Inicializar lista de fundaciones y el adapter
         fundacionList = new ArrayList<>();
         adapter = new FundacionAdapter(getContext(), fundacionList);
         recyclerView.setAdapter(adapter);
@@ -70,6 +66,22 @@ public class BuscarFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+        // Configurar el SearchView
+        SearchView searchView = view.findViewById(R.id.buscar);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.filter(newText);
+                return false;
+            }
         });
     }
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,30 +13,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lazo.modelo.Fundacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.FundacionViewHolder> {
+public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.ViewHolder> implements Filterable {
 
-    private Context context;
-    private List<Fundacion> fundacionList;
+    private final Context context;
+    private final List<Fundacion> fundacionList;
+    private final List<Fundacion> fundacionListFull;
 
     public FundacionAdapter(Context context, List<Fundacion> fundacionList) {
         this.context = context;
         this.fundacionList = fundacionList;
+        this.fundacionListFull = new ArrayList<>(fundacionList);
     }
 
     @NonNull
     @Override
-    public FundacionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_cuentas, parent, false);
-        return new FundacionViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FundacionViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Fundacion fundacion = fundacionList.get(position);
-        holder.nombre.setText(fundacion.getNombre());
-        holder.categoria.setText(fundacion.getCategoria());
+        holder.nombreTextView.setText(fundacion.getNombre());
+        holder.categoriaTextView.setText(fundacion.getCategoria());
     }
 
     @Override
@@ -42,14 +47,51 @@ public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.Fund
         return fundacionList.size();
     }
 
-    public static class FundacionViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                List<Fundacion> filteredList = new ArrayList<>();
 
-        TextView nombre, categoria;
+                if (constraint == null || constraint.length() == 0) {
+                    filteredList.addAll(fundacionListFull);
+                } else {
+                    String filterPattern = constraint.toString().toLowerCase().trim();
+                    for (Fundacion fundacion : fundacionListFull) {
+                        if (fundacion.getNombre().toLowerCase().contains(filterPattern)) {
+                            filteredList.add(fundacion);
+                        }
+                    }
+                }
 
-        public FundacionViewHolder(@NonNull View itemView) {
+                FilterResults results = new FilterResults();
+                results.values = filteredList;
+                return results;
+            }
+
+            @Override
+            @SuppressWarnings("unchecked")
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                fundacionList.clear();
+                fundacionList.addAll((List<Fundacion>) results.values);
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+    public void filter(String query) {
+        getFilter().filter(query);
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView nombreTextView;
+        TextView categoriaTextView;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.recTitle);
-            categoria = itemView.findViewById(R.id.categoria_fundacion);
+            nombreTextView = itemView.findViewById(R.id.nombre_fundation);
+            categoriaTextView = itemView.findViewById(R.id.categoria_fundacion);
         }
     }
 }
