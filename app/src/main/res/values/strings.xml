@@ -3,7 +3,7 @@
     <string name="app_name">Lazo</string>
     <string name="correo">Correo</string>
     <string name="contrasenha">Contraseña</string>
-    <string name="btnIngresar">Ingresar</string>
+    <string name="btnIngresar">INGRESA</string>
     <string name="registrate">Crear cuenta</string>
 
 
@@ -12,7 +12,6 @@
     <string name="regApellido">Apellido</string>
     <string name="repContrasenha"> Reingrese contraseña</string>
     <string name="telefono">Teléfono</string>
-    <string name="direccion">Dirección</string>
     <string name="direccionAcopio">Dirección del centro de acopio</string>
     <string name="btnRegistrar">REGISTRARSE</string>
 
@@ -35,6 +34,11 @@
     <string name="drawer_open">Drawerabierto</string>
     <string name="drawer_close">Drawercerrado</string>
 
+    //item producto
+    <string name="nombre_producto">Nombre del producto</string>
+    <string name="agregar_producto">Agregar</string>
+    <string name="producto_listo">Listo</string>
+
     //item recycler
     <string name="categoria_fundacion">Categoría</string>
     <string name="nombre_fundacion">Nombre</string>
@@ -42,7 +46,14 @@
     //menu de cuentas consultadas
     <string name="reportar">Reportar</string>
     <string name="seguir">Seguir</string>
+
+    //fragmento perfil: usuario estandar
+    <string name="nombre_cuenta">Nombre cuenta</string>
+    <string name="correo_cuenta">Correo cuenta</string>
+    <string name="contrasenha_cuenta">Contraseña cuenta</string>
+    <string name="telefono_cuenta">Teléfono cuenta</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

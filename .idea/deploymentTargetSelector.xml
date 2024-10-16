@@ -15,10 +15,10 @@
       </SelectionState>
       <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-09T17:56:28.353531400Z">
+        <DropdownSelection timestamp="2024-10-15T00:51:46.701428800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ASUS-FX503\.android\avd\Pixel_8a_API_25.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=ZY326QR47G" />
             </handle>
           </Target>
         </DropdownSelection>

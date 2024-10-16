@@ -14,7 +14,6 @@ public class Usuario {
         this.contrasena = contrasena;
         this.telefono = telefono;
     }
-
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
@@ -26,6 +25,5 @@ public class Usuario {
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
-
 }
 

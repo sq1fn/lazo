@@ -19,6 +19,4 @@ public class Fundacion extends Usuario{
 
     public String getCategoria() { return categoria; }
     public void setCategoria(String categoria) { this.categoria = categoria; }
-
-
 }

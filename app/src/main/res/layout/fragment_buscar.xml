@@ -16,7 +16,7 @@
         app:iconifiedByDefault="false"
         app:searchHintIcon="@null"
         app:queryHint="buscar..."
-        android:focusable="false"
+        android:focusable="true"
         android:background="@drawable/cuadro_de_texto" />
 
     <androidx.recyclerview.widget.RecyclerView
