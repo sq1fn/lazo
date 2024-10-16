@@ -24,7 +24,7 @@ public class HistorialFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_historial, container, false); // Cambia a tu layout XML
+        View view = inflater.inflate(R.layout.fragment_historial, container, false);
 
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager2 = view.findViewById(R.id.view_pager);
