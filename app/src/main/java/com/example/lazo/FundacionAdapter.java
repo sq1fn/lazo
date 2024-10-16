@@ -1,6 +1,7 @@
 package com.example.lazo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,15 @@ public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.View
         Fundacion fundacion = fundacionList.get(position);
         holder.nombreTextView.setText(fundacion.getNombre());
         holder.categoriaTextView.setText(fundacion.getCategoria());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, PerfilConsulta.class);
+            intent.putExtra("nombre", fundacion.getNombre());
+            intent.putExtra("categoria", fundacion.getCategoria());
+            intent.putExtra("direccion", fundacion.getDireccion());
+            intent.putExtra("telefono", fundacion.getTelefono());
+            context.startActivity(intent);
+        });
     }
 
     @Override

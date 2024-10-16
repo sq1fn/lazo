@@ -49,10 +49,8 @@ public class BuscarFragment extends Fragment {
         adapter = new FundacionAdapter(getContext(), fundacionList);
         recyclerView.setAdapter(adapter);
 
-        // Conectar con Firebase para obtener las fundaciones
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users/fundaciones");
 
-        // Obtener los datos de Firebase
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -68,7 +66,6 @@ public class BuscarFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        // Configurar el SearchView
         SearchView searchView = view.findViewById(R.id.buscar);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
