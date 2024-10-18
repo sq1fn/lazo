@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     static class ProductoViewHolder extends RecyclerView.ViewHolder {
         TextView nombreProductoTextView;
-        Button btnAgregarProducto;
+        ImageView btnAgregarProducto;
 
         ProductoViewHolder(View itemView) {
             super(itemView);

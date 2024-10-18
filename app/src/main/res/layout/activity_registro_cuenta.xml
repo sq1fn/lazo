@@ -95,7 +95,7 @@
 
             <!-- Campos adicionales para fundaciones -->
             <LinearLayout
-                android:id="@+id/fundacion_extra_fields"
+                android:id="@+id/fundacion_campos_extra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

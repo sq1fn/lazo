@@ -52,8 +52,11 @@
     <string name="correo_cuenta">Correo cuenta</string>
     <string name="contrasenha_cuenta">Contraseña cuenta</string>
     <string name="telefono_cuenta">Teléfono cuenta</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    //item detalle del producto
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="descripcion_producto">Descripción del producto</string>
 
 
 </resources>

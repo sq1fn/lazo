@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistroCuenta extends AppCompatActivity {
 
-    private LinearLayout fundacionExtraFields;
+    private LinearLayout fundacionCamposExtra;
     private EditText nombre, correo, contrasena, direccion, telefono;
     private Spinner categoria;
     @SuppressLint("UseSwitchCompatOrMaterialCode")
@@ -53,15 +53,15 @@ public class RegistroCuenta extends AppCompatActivity {
         telefono = findViewById(R.id.registro_telefono);
         Button botonRegistro = findViewById(R.id.boton_registro);
         switchTipoUsuario = findViewById(R.id.switch_tipo_usuario);
-        fundacionExtraFields = findViewById(R.id.fundacion_extra_fields);
+        fundacionCamposExtra = findViewById(R.id.fundacion_campos_extra);
 
         //Activar funcion del switch
         // el cual muestra campos relacionados a las fundaciones
         switchTipoUsuario.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                fundacionExtraFields.setVisibility(View.VISIBLE);
+                fundacionCamposExtra.setVisibility(View.VISIBLE);
             } else {
-                fundacionExtraFields.setVisibility(View.GONE);
+                fundacionCamposExtra.setVisibility(View.GONE);
             }
         });
 
