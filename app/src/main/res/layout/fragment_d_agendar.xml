@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dDetalleProducto">
+    tools:context=".dAgendar">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="aquí das detalles del producto" />
+        android:text="aquí agendas" />
 
 </FrameLayout>

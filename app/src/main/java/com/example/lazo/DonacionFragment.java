@@ -40,7 +40,17 @@ public class DonacionFragment extends Fragment {
         viewPager2.setAdapter(adapter1);
 
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
-            tab.setText(position == 0 ? "Seleccion" : "demás");
+            switch (position) {
+                case 0:
+                    tab.setText("Seleccion");
+                    break;
+                case 1:
+                    tab.setText("Detalle");
+                    break;
+                case 2:
+                    tab.setText("Agenda");
+                    break;
+            }
         }).attach();
 
         return view;

@@ -18,6 +18,8 @@ public class ViewPagerAdapter_D extends FragmentStateAdapter {
         switch (position) {
             case 1:
                 return new dDetalleProducto();
+            case 2:
+                return new dAgendar();
             default:
                 return new dSeleccionProductos();
         }
@@ -25,6 +27,6 @@ public class ViewPagerAdapter_D extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }
