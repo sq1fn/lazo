@@ -29,6 +29,16 @@ public class PantallaPrincipal extends AppCompatActivity {
         setSupportActionBar(tb);
 
         TabLayout tl = (TabLayout) findViewById(R.id.navbottom);
+
+        TabLayout.Tab initialTab = tl.getTabAt(0);
+        if (initialTab != null) {
+            initialTab.select();
+        }
+
+        //Fragmento seleccionado al iniciar la aplicación
+        HomeFragment h = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contendedor, h).commit();
+
         tl.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -119,10 +129,8 @@ public class PantallaPrincipal extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu_pprincipal,menu);
         return true;
-
     }
 
     @Override
@@ -130,7 +138,6 @@ public class PantallaPrincipal extends AppCompatActivity {
         int id= item.getItemId();
         if(id == R.id.notificaciones){
             Toast.makeText(this,"son notificaciones",Toast.LENGTH_SHORT).show();
-        }
-        return false;
+        }return false;
     };
 }

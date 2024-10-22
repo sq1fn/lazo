@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.lazo.modelo.Fundacion;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +24,14 @@ public class BuscarFragment extends Fragment {
 
     private FundacionAdapter adapter;
     private List<Fundacion> fundacionList;
+    private FirebaseFirestore db;
 
     public BuscarFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -49,23 +51,30 @@ public class BuscarFragment extends Fragment {
         adapter = new FundacionAdapter(getContext(), fundacionList);
         recyclerView.setAdapter(adapter);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users/fundaciones");
+        // Referencia a la colección de fundaciones en Firestore
+        CollectionReference fundacionesRef = db.collection("fundaciones");
 
-        reference.addValueEventListener(new ValueEventListener() {
+        // Obtener datos en tiempo real desde Firestore
+        fundacionesRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                fundacionList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Fundacion fundacion = dataSnapshot.getValue(Fundacion.class);
-                    fundacionList.add(fundacion);
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    // Manejar el error
+                    return;
                 }
-                adapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+                fundacionList.clear();
+                if (value != null) {
+                    for (com.google.firebase.firestore.DocumentSnapshot snapshot : value.getDocuments()) {
+                        Fundacion fundacion = snapshot.toObject(Fundacion.class);
+                        fundacionList.add(fundacion);
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
         });
 
+        // Configuración de la barra de búsqueda
         SearchView searchView = view.findViewById(R.id.buscar);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

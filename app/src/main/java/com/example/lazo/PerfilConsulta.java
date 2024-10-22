@@ -1,58 +1,40 @@
 package com.example.lazo;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class PerfilConsulta extends AppCompatActivity {
+    private TextView nombrePerfil, categoriaPerfil, telefonoPerfil, direccionPerfil, descripcionPerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_consulta);
 
-        Toolbar tb = (Toolbar) findViewById(R.id.toolbar1);
-        setSupportActionBar(tb);
+        // Inicializa las vistas
+        nombrePerfil = findViewById(R.id.nombrePerfil);
+        categoriaPerfil = findViewById(R.id.categoriaPerfil);
+        telefonoPerfil = findViewById(R.id.telefonoPerfil);
+        direccionPerfil = findViewById(R.id.direccionPerfil);
+        descripcionPerfil = findViewById(R.id.descripcionPerfil);
 
-        String nombre = getIntent().getStringExtra("nombre");
-        String categoria = getIntent().getStringExtra("categoria");
-        String direccion = getIntent().getStringExtra("direccion");
-        String telefono = getIntent().getStringExtra("telefono");
+        // Recibe los datos del Intent
+        Intent intent = getIntent();
+        String nombre = intent.getStringExtra("nombre");
+        String categoria = intent.getStringExtra("categoria");
+        String telefono = intent.getStringExtra("telefono");
+        String direccion = intent.getStringExtra("direccion");
+        String descripcion = intent.getStringExtra("descripcion");
 
-        TextView nombrePerfil = findViewById(R.id.nombrePerfil);
-        TextView categoriaPerfil = findViewById(R.id.categoriaPerfil);
-        TextView direccionPerfil = findViewById(R.id.direccionPerfil);
-        TextView telefonoPerfil = findViewById(R.id.telefonoPerfil);
-
+        // Asigna los valores a las vistas
         nombrePerfil.setText(nombre);
         categoriaPerfil.setText(categoria);
-        direccionPerfil.setText(direccion);
         telefonoPerfil.setText(telefono);
+        direccionPerfil.setText(direccion);
+        descripcionPerfil.setText(descripcion);
     }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_perfil_consulta, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.seguir) {
-            Toast.makeText(this, "Siguiendo a la fundación", Toast.LENGTH_SHORT).show();
-            return true; // Indica que la acción fue manejada
-        } else if (id == R.id.reportar) {
-            Toast.makeText(this, "Reportando a la fundación", Toast.LENGTH_SHORT).show();
-            return true;
-        } return false;
-    }
-
 }
 

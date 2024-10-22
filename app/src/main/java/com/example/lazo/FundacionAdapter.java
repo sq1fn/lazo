@@ -48,6 +48,7 @@ public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.View
             intent.putExtra("categoria", fundacion.getCategoria());
             intent.putExtra("direccion", fundacion.getDireccion());
             intent.putExtra("telefono", fundacion.getTelefono());
+            intent.putExtra("descripcion", fundacion.getDescripcion());
             context.startActivity(intent);
         });
     }

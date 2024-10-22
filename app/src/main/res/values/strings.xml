@@ -6,13 +6,13 @@
     <string name="btnIngresar">INGRESA</string>
     <string name="registrate">Crear cuenta</string>
 
-
     //registrar cuenta
     <string name="regNombre">Nombre</string>
     <string name="regApellido">Apellido</string>
     <string name="repContrasenha"> Reingrese contraseña</string>
     <string name="telefono">Teléfono</string>
-    <string name="direccionAcopio">Dirección del centro de acopio</string>
+    <string name="direccionAcopio">Centro de acopio</string>
+    <string name="descripcion_fundacion">Descripción de la fundación</string>
     <string name="btnRegistrar">REGISTRARSE</string>
 
     <string name="fundacionSwitch">Fundación</string>
@@ -52,6 +52,7 @@
     <string name="correo_cuenta">Correo cuenta</string>
     <string name="contrasenha_cuenta">Contraseña cuenta</string>
     <string name="telefono_cuenta">Teléfono cuenta</string>
+    <string name="editar_perfil">Editar perfil</string>
 
 
     //item detalle del producto

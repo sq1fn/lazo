@@ -11,61 +11,45 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.lazo.MainActivity;
 import com.example.lazo.modelo.Fundacion;
 import com.example.lazo.modelo.Usuario;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegistroCuenta extends AppCompatActivity {
 
     private LinearLayout fundacionCamposExtra;
-    private EditText nombre, correo, contrasena, direccion, telefono;
+    private EditText nombre, correo, contrasena, direccion, telefono, descripcion;
     private Spinner categoria;
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch switchTipoUsuario;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_registro_cuenta);
 
-        //Ajustar insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        //Inicializar vistas
         nombre = findViewById(R.id.registro_nombre);
         correo = findViewById(R.id.registro_correo);
         contrasena = findViewById(R.id.registro_contrasenha);
         direccion = findViewById(R.id.registro_direccion);
         categoria = findViewById(R.id.spinner_categoria);
         telefono = findViewById(R.id.registro_telefono);
+        descripcion = findViewById(R.id.registro_descripcion);
         Button botonRegistro = findViewById(R.id.boton_registro);
         switchTipoUsuario = findViewById(R.id.switch_tipo_usuario);
         fundacionCamposExtra = findViewById(R.id.fundacion_campos_extra);
 
-        //Activar funcion del switch
-        // el cual muestra campos relacionados a las fundaciones
         switchTipoUsuario.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                fundacionCamposExtra.setVisibility(View.VISIBLE);
-            } else {
-                fundacionCamposExtra.setVisibility(View.GONE);
-            }
+            fundacionCamposExtra.setVisibility(isChecked ? View.VISIBLE : View.GONE);
         });
 
-        // Acción del botón de registro
         botonRegistro.setOnClickListener(v -> {
             String nombreUsuario = nombre.getText().toString();
             String correoUsuario = correo.getText().toString();
@@ -90,33 +74,61 @@ public class RegistroCuenta extends AppCompatActivity {
                 return;
             }
 
-            // Referencia a Firebase
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference reference;
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            CollectionReference reference;
 
             if (esFundacion) {
                 String direccionF = direccion.getText().toString();
                 String categoriaSeleccionada = categoria.getSelectedItem().toString();
+                String descripcionF = descripcion.getText().toString();
 
-                // Validaciones adicionales para la fundación
                 if (direccionF.isEmpty()) {
                     direccion.setError("La dirección es obligatoria");
                     return;
                 }
 
-                Fundacion fundacion = new Fundacion(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario, direccionF, categoriaSeleccionada);
-                reference = database.getReference("users/fundaciones");
-                reference.child(nombreUsuario).setValue(fundacion);
+                Fundacion fundacion = new Fundacion(
+                        nombreUsuario,
+                        correoUsuario,
+                        contrasenaUsuario,
+                        telefonoUsuario,
+                        direccionF,
+                        categoriaSeleccionada,
+                        descripcionF
+                );
+
+                reference = db.collection("fundaciones");
+                reference.add(fundacion)
+                        .addOnSuccessListener(documentReference -> {
+                            Toast.makeText(RegistroCuenta.this, "Registro de fundación exitoso", Toast.LENGTH_SHORT).show();
+                            // Redirige al MainActivity después del éxito en el registro
+                            startActivity(new Intent(RegistroCuenta.this, MainActivity.class));
+                            finish();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(RegistroCuenta.this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
 
             } else {
-                Usuario usuario = new Usuario(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario);
-                reference = database.getReference("users/usuarioStandar");
-                reference.child(nombreUsuario).setValue(usuario);
-            }
+                Usuario usuario = new Usuario(
+                        nombreUsuario,
+                        correoUsuario,
+                        contrasenaUsuario,
+                        telefonoUsuario
+                );
 
-            Toast.makeText(RegistroCuenta.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(RegistroCuenta.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+                reference = db.collection("usuarios");
+                reference.add(usuario)
+                        .addOnSuccessListener(documentReference -> {
+                            Toast.makeText(RegistroCuenta.this, "Registro de usuario exitoso", Toast.LENGTH_SHORT).show();
+                            // Redirige al MainActivity después del éxito en el registro
+                            startActivity(new Intent(RegistroCuenta.this, MainActivity.class));
+                            finish();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(RegistroCuenta.this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
+            }
         });
-    }};
+    }
+}
