@@ -16,7 +16,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +30,12 @@ public class BuscarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = FirebaseFirestore.getInstance();
-    }
+        db = FirebaseFirestore.getInstance();}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_buscar, container, false);
-    }
+        return inflater.inflate(R.layout.fragment_buscar, container, false);}
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -51,17 +48,12 @@ public class BuscarFragment extends Fragment {
         adapter = new FundacionAdapter(getContext(), fundacionList);
         recyclerView.setAdapter(adapter);
 
-        // Referencia a la colección de fundaciones en Firestore
         CollectionReference fundacionesRef = db.collection("fundaciones");
 
-        // Obtener datos en tiempo real desde Firestore
         fundacionesRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (error != null) {
-                    // Manejar el error
-                    return;
-                }
+                if (error != null) {return;}
 
                 fundacionList.clear();
                 if (value != null) {
@@ -70,24 +62,17 @@ public class BuscarFragment extends Fragment {
                         fundacionList.add(fundacion);
                     }
                     adapter.notifyDataSetChanged();
-                }
-            }
-        });
+
+                    adapter.fundacionListFull.clear();
+                    adapter.fundacionListFull.addAll(fundacionList);
+                }}});
 
         // Configuración de la barra de búsqueda
         SearchView searchView = view.findViewById(R.id.buscar);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                adapter.filter(query);
-                return false;
-            }
+            public boolean onQueryTextSubmit(String query) {adapter.filter(query);return false;}
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.filter(newText);
-                return false;
-            }
-        });
-    }
-}
+            public boolean onQueryTextChange(String newText) {adapter.filter(newText);return false;}});
+    }}

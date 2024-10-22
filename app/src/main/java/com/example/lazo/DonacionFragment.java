@@ -49,10 +49,7 @@ public class DonacionFragment extends Fragment {
                     break;
                 case 2:
                     tab.setText("Agenda");
-                    break;
-            }
-        }).attach();
-
+                    break;}}).attach();
         return view;
     }
 }

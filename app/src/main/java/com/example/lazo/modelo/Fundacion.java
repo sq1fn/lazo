@@ -5,12 +5,8 @@ public class Fundacion extends Usuario {
     private String categoria;
     private String descripcion;
 
-    // Constructor vacío necesario para Firebase
-    public Fundacion() {
-        super();
-    }
+    public Fundacion() {super();}
 
-    // Constructor con parámetros
     public Fundacion(String nombreUsuario, String correoUsuario, String contrasenaUsuario, String telefonoUsuario, String direccionF, String categoriaSeleccionada, String descripcion) {
         super(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario);
         this.direccion = direccionF;
@@ -18,7 +14,6 @@ public class Fundacion extends Usuario {
         this.descripcion = descripcion;
     }
 
-    // Getters y setters
     public String getDireccion() {return direccion;}
     public void setDireccion(String direccion) {this.direccion = direccion;}
 

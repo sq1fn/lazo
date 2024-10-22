@@ -9,8 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 public class ViewPagerAdapter_D extends FragmentStateAdapter {
 
     public ViewPagerAdapter_D(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-        super(fragmentManager, lifecycle);
-    }
+        super(fragmentManager, lifecycle);}
 
     @NonNull
     @Override
@@ -26,7 +25,5 @@ public class ViewPagerAdapter_D extends FragmentStateAdapter {
     }
 
     @Override
-    public int getItemCount() {
-        return 3;
-    }
+    public int getItemCount() {return 3;}
 }

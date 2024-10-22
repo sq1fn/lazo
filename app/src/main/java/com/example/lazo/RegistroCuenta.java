@@ -10,13 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.example.lazo.MainActivity;
 import com.example.lazo.modelo.Fundacion;
 import com.example.lazo.modelo.Usuario;
 import com.google.firebase.firestore.CollectionReference;
@@ -101,12 +95,8 @@ public class RegistroCuenta extends AppCompatActivity {
                 reference.add(fundacion)
                         .addOnSuccessListener(documentReference -> {
                             Toast.makeText(RegistroCuenta.this, "Registro de fundación exitoso", Toast.LENGTH_SHORT).show();
-                            // Redirige al MainActivity después del éxito en el registro
                             startActivity(new Intent(RegistroCuenta.this, MainActivity.class));
                             finish();
-                        })
-                        .addOnFailureListener(e -> {
-                            Toast.makeText(RegistroCuenta.this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
 
             } else {
@@ -121,12 +111,8 @@ public class RegistroCuenta extends AppCompatActivity {
                 reference.add(usuario)
                         .addOnSuccessListener(documentReference -> {
                             Toast.makeText(RegistroCuenta.this, "Registro de usuario exitoso", Toast.LENGTH_SHORT).show();
-                            // Redirige al MainActivity después del éxito en el registro
                             startActivity(new Intent(RegistroCuenta.this, MainActivity.class));
                             finish();
-                        })
-                        .addOnFailureListener(e -> {
-                            Toast.makeText(RegistroCuenta.this, "Error en el registro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
             }
         });

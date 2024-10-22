@@ -3,7 +3,6 @@ package com.example.lazo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,13 +33,18 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.nombreProductoTextView.setText(producto.getNombre());
 
         holder.btnAgregarProducto.setOnClickListener(v -> {
-            // enviar a detalle
+            // para enviar el producto a detalle
         });
     }
 
     @Override
     public int getItemCount() {
         return productos.size();
+    }
+
+    public void actualizarLista(List<Producto> productosFiltrados) {
+        this.productos = productosFiltrados;
+        notifyDataSetChanged();
     }
 
     static class ProductoViewHolder extends RecyclerView.ViewHolder {
