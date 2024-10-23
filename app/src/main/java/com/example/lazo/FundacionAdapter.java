@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.lazo.modelo.Fundacion;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +43,10 @@ public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.View
         holder.nombreTextView.setText(fundacion.getNombre());
         holder.categoriaTextView.setText(fundacion.getCategoria());
 
+        Glide.with(context)
+                        .load(fundacion.getFotoperfil())
+                                .into(holder.fotoPerfilImageView);
+        
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, PerfilConsulta.class);
             intent.putExtra("nombre", fundacion.getNombre());
@@ -47,6 +54,7 @@ public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.View
             intent.putExtra("direccion", fundacion.getDireccion());
             intent.putExtra("telefono", fundacion.getTelefono());
             intent.putExtra("descripcion", fundacion.getDescripcion());
+            intent.putExtra("fotoPerfi",fundacion.getFotoperfil());
             context.startActivity(intent);});
     }
 
@@ -86,9 +94,11 @@ public class FundacionAdapter extends RecyclerView.Adapter<FundacionAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nombreTextView;
         TextView categoriaTextView;
+        ShapeableImageView fotoPerfilImageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nombreTextView = itemView.findViewById(R.id.nombre_fundation);
             categoriaTextView = itemView.findViewById(R.id.categoria_fundacion);
+            fotoPerfilImageView = itemView.findViewById(R.id.fotoperfil);
         }}}

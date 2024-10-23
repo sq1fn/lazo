@@ -5,15 +5,18 @@ public class Usuario {
     private String correo;
     private String contrasena;
     private String telefono;
+    private String fotoperfil;
 
     public Usuario(){}
 
-    public Usuario(String nombre, String correo, String contrasena, String telefono){
+    public Usuario(String nombre, String correo, String contrasena, String telefono, String fotoperfil){
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
         this.telefono = telefono;
+        this.fotoperfil = fotoperfil;
     }
+
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
@@ -25,5 +28,7 @@ public class Usuario {
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }
-}
 
+    public String getFotoperfil() { return fotoperfil; }
+    public void setFotoperfil(String fotoperfil) { this.fotoperfil = fotoperfil; }
+}

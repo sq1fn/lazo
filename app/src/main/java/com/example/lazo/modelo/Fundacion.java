@@ -7,8 +7,8 @@ public class Fundacion extends Usuario {
 
     public Fundacion() {super();}
 
-    public Fundacion(String nombreUsuario, String correoUsuario, String contrasenaUsuario, String telefonoUsuario, String direccionF, String categoriaSeleccionada, String descripcion) {
-        super(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario);
+    public Fundacion(String nombreUsuario, String correoUsuario, String contrasenaUsuario, String telefonoUsuario, String fotoperfilUsuario, String direccionF, String categoriaSeleccionada, String descripcion) {
+        super(nombreUsuario, correoUsuario, contrasenaUsuario, telefonoUsuario, fotoperfilUsuario);
         this.direccion = direccionF;
         this.categoria = categoriaSeleccionada;
         this.descripcion = descripcion;

@@ -70,6 +70,7 @@ public class RegistroCuenta extends AppCompatActivity {
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference reference;
+            String fotoPerfilPredeterminada = "https://firebasestorage.googleapis.com/v0/b/lazo-db1c4.appspot.com/o/Fotos%20de%20%20perfil%2Fsinfoto.png?alt=media&token=6cb09d15-45ce-44e1-8d91-e48d6d8568d7";
 
             if (esFundacion) {
                 String direccionF = direccion.getText().toString();
@@ -86,6 +87,7 @@ public class RegistroCuenta extends AppCompatActivity {
                         correoUsuario,
                         contrasenaUsuario,
                         telefonoUsuario,
+                        fotoPerfilPredeterminada,
                         direccionF,
                         categoriaSeleccionada,
                         descripcionF
@@ -104,7 +106,8 @@ public class RegistroCuenta extends AppCompatActivity {
                         nombreUsuario,
                         correoUsuario,
                         contrasenaUsuario,
-                        telefonoUsuario
+                        telefonoUsuario,
+                        fotoPerfilPredeterminada
                 );
 
                 reference = db.collection("usuarios");
